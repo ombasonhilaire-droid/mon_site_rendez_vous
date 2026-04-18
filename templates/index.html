@@ -1,1 +1,222 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilaire - Développeur Python & DevOps - Isiro</title>
+    <style>
+        /* --- VARIABLES & RESET (Pour la légèreté) --- */
+        :root {
+            --primary: #0a192f; /* Bleu Nuit Tech (Inspiré DevOps/GitHub) */
+            --secondary: #64ffda; /* Vert Émeraude (Accent moderne) */
+            --text-main: #ccd6f6;
+            --text-muted: #8892b0;
+            --bg-body: #0a192f;
+            --bg-card: #112240;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* --- HERO SECTION (Votre Photo et Titre) --- */
+        .hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        .hero h1 { font-size: 2.5rem; color: #e6f1ff; }
+        .hero h1 span { color: var(--secondary); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn:hover { background-color: rgba(100, 255, 218, 0.1); }
+
+        /* --- SECTIONS GRIDS (Services & Tech) --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #e6f1ff;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            border: 1px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.2);
+        }
+
+        .card h3 { color: var(--secondary); margin-bottom: 15px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplification mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Hilaire.dev</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="hero" class="hero">
+
+<img src="{{ url_for('static', filename='ma-photo.jpg') }}" alt="Hilaire" class="profile-img">
+
+            <h1>Je suis <span>Hilaire</span>.</h1>
+            <p>Développeur Python spécialisé en Intelligence Artificielle et Ingénierie DevOps. Je construis des solutions web robustes, automatisées et performantes depuis Isiro.</p>
+            <a href="#contact" class="btn">Me Contacter pour un Projet</a>
+        </section>
+
+        <section id="services">
+            <h2 class="section-title">Mes Services Pro</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Développement Web Python</h3>
+                    <p>Création de sites vitrines et d'applications web dynamiques (prise de rendez-vous, gestion de stock) utilisant Flask/Django.</p>
+                </div>
+                <div class="card">
+                    <h3>Solutions IA Intégrées</h3>
+                    <p>Automatisation de tâches et intégration de modèles d'IA (comme Gemini) pour booster la productivité de votre entreprise.</p>
+                </div>
+                <div class="card">
+                    <h3>Audit & DevOps</h3>
+                    <p>Optimisation de la performance de vos sites, déploiement sécurisé sur GitHub Pages ou serveurs privés, et gestion de l'infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech">
+            <h2 class="section-title">Ma Stack Technique</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Langages</h3>
+                    <p>Python (Expert), HTML5, CSS3 Moderne, Bash scripting.</p>
+                </div>
+                <div class="card">
+                    <h3>Outils & DevOps</h3>
+                    <p>Git, GitHub (Actions), Linux Mint (Environnement), Gemini/Copilot (IA Dev).</p>
+                </div>
+            </div>
+        </section>
+
+      <section id="contact" style="background-color: var(--bg-card); padding: 40px; border-radius: 8px; margin-top: 40px;">
+    <h2 class="section-title">Inscrivez-vous / Prenez RDV</h2>
+    <form action="/inscription" method="POST" style="display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto;">
+        <input type="text" name="nom" placeholder="Votre Nom complet" required style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: transparent; color: white;">
+        
+        <input type="tel" name="whatsapp" placeholder="Votre numéro WhatsApp" required style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: transparent; color: white;">
+        
+        <select name="service" style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: var(--bg-card); color: white;">
+            <option value="charge">Recharge Téléphone (Cabine)</option>
+            <option value="site">Création de Site Web</option>
+            <option value="formation">Formation Python/IA</option>
+        </select>
+
+        <button type="submit" class="btn" style="background-color: var(--secondary); color: var(--primary); border: none; cursor: pointer;">
+            Envoyer ma demande
+        </button>
+    </form>
+</section>
+
+            <h2 class="section-title">Prêt à moderniser votre activité ?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Disponible à Isiro et en ligne.</p>
+            <p class="logo">[+243810402480]</p>
+            <p style="margin-top: 10px;">[ombasonhilaire@gmail.com]</p>
+            
+   <a href="https://wa.me/243810402480" style="position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px; border-radius: 50px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; font-weight: bold;">
+    WhatsApp Rapide
+</a>
+
+        </section>
+
+        <footer>
+            <p style="text-align: center; padding: 20px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(100, 255, 218, 0.1);">
+                &copy; 2026 Hilaire.dev. Propulsé par Python sur Pydroid 3.
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
