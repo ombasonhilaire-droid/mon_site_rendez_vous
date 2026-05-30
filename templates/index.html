@@ -1,222 +1,289 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hilaire - Développeur Python & DevOps - Isiro</title>
+    <title>Mon Site Rendez-vous</title>
     <style>
-        /* --- VARIABLES & RESET (Pour la légèreté) --- */
-        :root {
-            --primary: #0a192f; /* Bleu Nuit Tech (Inspiré DevOps/GitHub) */
-            --secondary: #64ffda; /* Vert Émeraude (Accent moderne) */
-            --text-main: #ccd6f6;
-            --text-muted: #8892b0;
-            --bg-body: #0a192f;
-            --bg-card: #112240;
-            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 60px 0; }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
         }
-
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a:hover { color: var(--secondary); }
-
-        /* --- HERO SECTION (Votre Photo et Titre) --- */
-        .hero {
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
         }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--secondary);
-            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
-        }
-
-        .hero h1 { font-size: 2.5rem; color: #e6f1ff; }
-        .hero h1 span { color: var(--secondary); }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .btn:hover { background-color: rgba(100, 255, 218, 0.1); }
-
-        /* --- SECTIONS GRIDS (Services & Tech) --- */
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
+        
+        .subtitle {
             text-align: center;
-            color: #e6f1ff;
-            position: relative;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
         }
-        .section-title::after {
-            content: '';
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
             display: block;
-            width: 100px;
-            height: 2px;
-            background: var(--secondary);
-            margin: 10px auto 0;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
         }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
         }
-
-        .card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            border: 1px solid transparent;
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(100, 255, 218, 0.2);
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        .card h3 { color: var(--secondary); margin-bottom: 15px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplification mobile */
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .error-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .error-list li {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <header>
-            <div class="logo">Hilaire.dev</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="hero" class="hero">
-
-<img src="{{ url_for('static', filename='ma-photo.jpg') }}" alt="Hilaire" class="profile-img">
-
-            <h1>Je suis <span>Hilaire</span>.</h1>
-            <p>Développeur Python spécialisé en Intelligence Artificielle et Ingénierie DevOps. Je construis des solutions web robustes, automatisées et performantes depuis Isiro.</p>
-            <a href="#contact" class="btn">Me Contacter pour un Projet</a>
-        </section>
-
-        <section id="services">
-            <h2 class="section-title">Mes Services Pro</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Développement Web Python</h3>
-                    <p>Création de sites vitrines et d'applications web dynamiques (prise de rendez-vous, gestion de stock) utilisant Flask/Django.</p>
-                </div>
-                <div class="card">
-                    <h3>Solutions IA Intégrées</h3>
-                    <p>Automatisation de tâches et intégration de modèles d'IA (comme Gemini) pour booster la productivité de votre entreprise.</p>
-                </div>
-                <div class="card">
-                    <h3>Audit & DevOps</h3>
-                    <p>Optimisation de la performance de vos sites, déploiement sécurisé sur GitHub Pages ou serveurs privés, et gestion de l'infrastructure.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tech">
-            <h2 class="section-title">Ma Stack Technique</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Langages</h3>
-                    <p>Python (Expert), HTML5, CSS3 Moderne, Bash scripting.</p>
-                </div>
-                <div class="card">
-                    <h3>Outils & DevOps</h3>
-                    <p>Git, GitHub (Actions), Linux Mint (Environnement), Gemini/Copilot (IA Dev).</p>
-                </div>
-            </div>
-        </section>
-
-      <section id="contact" style="background-color: var(--bg-card); padding: 40px; border-radius: 8px; margin-top: 40px;">
-    <h2 class="section-title">Inscrivez-vous / Prenez RDV</h2>
-    <form action="/inscription" method="POST" style="display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto;">
-        <input type="text" name="nom" placeholder="Votre Nom complet" required style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: transparent; color: white;">
+        <h1>💇 Mon Site Rendez-vous</h1>
+        <p class="subtitle">Prenez votre rendez-vous facilement</p>
         
-        <input type="tel" name="whatsapp" placeholder="Votre numéro WhatsApp" required style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: transparent; color: white;">
-        
-        <select name="service" style="padding: 12px; border-radius: 4px; border: 1px solid var(--secondary); background: var(--bg-card); color: white;">
-            <option value="charge">Recharge Téléphone (Cabine)</option>
-            <option value="site">Création de Site Web</option>
-            <option value="formation">Formation Python/IA</option>
-        </select>
-
-        <button type="submit" class="btn" style="background-color: var(--secondary); color: var(--primary); border: none; cursor: pointer;">
-            Envoyer ma demande
-        </button>
-    </form>
-</section>
-
-            <h2 class="section-title">Prêt à moderniser votre activité ?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Disponible à Isiro et en ligne.</p>
-            <p class="logo">[+243810402480]</p>
-            <p style="margin-top: 10px;">[ombasonhilaire@gmail.com]</p>
+        <form id="formulaire">
+            <div class="form-group">
+                <label for="nom">Votre nom *</label>
+                <input 
+                    type="text" 
+                    id="nom" 
+                    name="nom" 
+                    placeholder="Ex: Jean Dupont"
+                    required
+                >
+            </div>
             
-   <a href="https://wa.me/243810402480" style="position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px; border-radius: 50px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; font-weight: bold;">
-    WhatsApp Rapide
-</a>
-
-        </section>
-
-        <footer>
-            <p style="text-align: center; padding: 20px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(100, 255, 218, 0.1);">
-                &copy; 2026 Hilaire.dev. Propulsé par Python sur Pydroid 3.
-            </p>
-        </footer>
-
+            <div class="form-group">
+                <label for="whatsapp">Votre téléphone / WhatsApp *</label>
+                <input 
+                    type="tel" 
+                    id="whatsapp" 
+                    name="whatsapp" 
+                    placeholder="Ex: +33 6 12 34 56 78"
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Service demandé *</label>
+                <select id="service" name="service" required>
+                    <option value="">-- Sélectionnez un service --</option>
+                    {% for service in services %}
+                        <option value="{{ service }}">{{ service }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit">
+                <span class="loading">
+                    <span class="spinner"></span>
+                    Envoi en cours...
+                </span>
+                <span class="text">Prendre Rendez-vous</span>
+            </button>
+        </form>
+        
+        <div id="message" class="message"></div>
     </div>
-
+    
+    <script>
+        const formulaire = document.getElementById('formulaire');
+        const messageDiv = document.getElementById('message');
+        const loadingSpan = document.querySelector('.loading');
+        const textSpan = document.querySelector('.text');
+        
+        formulaire.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Récupérer les données
+            const formData = new FormData(formulaire);
+            const data = {
+                nom: formData.get('nom'),
+                whatsapp: formData.get('whatsapp'),
+                service: formData.get('service')
+            };
+            
+            // Afficher le chargement
+            loadingSpan.style.display = 'inline';
+            textSpan.style.display = 'none';
+            messageDiv.style.display = 'none';
+            
+            try {
+                // Envoyer les données
+                const response = await fetch('/inscription', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                // Afficher le résultat
+                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = result.message;
+                
+                if (result.succes) {
+                    messageDiv.classList.remove('error');
+                    messageDiv.classList.add('success');
+                    formulaire.reset();
+                    
+                    // Message détaillé
+                    if (result.details) {
+                        messageDiv.innerHTML += `<br><small>${result.details}</small>`;
+                    }
+                } else {
+                    messageDiv.classList.remove('success');
+                    messageDiv.classList.add('error');
+                    
+                    // Afficher les erreurs
+                    if (result.erreurs && result.erreurs.length > 0) {
+                        messageDiv.innerHTML += '<ul class="error-list">';
+                        result.erreurs.forEach(err => {
+                            messageDiv.innerHTML += `<li>${err}</li>`;
+                        });
+                        messageDiv.innerHTML += '</ul>';
+                    }
+                }
+            } catch (error) {
+                messageDiv.style.display = 'block';
+                messageDiv.classList.remove('success');
+                messageDiv.classList.add('error');
+                messageDiv.innerHTML = '❌ Erreur de communication. Veuillez réessayer.';
+                console.error('Erreur:', error);
+            } finally {
+                // Rétablir le bouton
+                loadingSpan.style.display = 'none';
+                textSpan.style.display = 'inline';
+            }
+        });
+        
+        // Charger les services au chargement de la page
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/services');
+                const data = await response.json();
+                console.log('Services disponibles:', data.services);
+            } catch (error) {
+                console.error('Erreur lors du chargement des services:', error);
+            }
+        });
+    </script>
 </body>
 </html>
